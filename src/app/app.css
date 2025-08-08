@@ -1,3 +1,7 @@
 :root {
     --primary-color: rgba(35, 107, 155, 0.674);
 }
+
+body {
+    background-color: rgb(250, 253, 255);
+}
