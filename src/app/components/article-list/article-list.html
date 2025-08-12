@@ -1,10 +1,19 @@
 <section class="main-article">
     <ul class="article-list">
-        <li class="article-item article-title"> Title: {{article.title}}</li>
-        <img class="article-image" [src]="article.image" [alt]="article.title" />
-        <li class="article-item"> Content: {{article.content}}</li>
-        <li class="article-item"> Created at: {{article.createdAt}}</li>
-        <li class="article-item"> Likes: {{article.likeCount}} </li>
-        <li class="article-item"> Category name: {{article.categoryName}} </li>
+@for (article of articles; track article.id) {
+    @if (article.isPublished) {
+        <div class="article-card" [ngClass]="{'popular-article' : article.likeCount > 200}">
+            <h2 class="article-title">{{article.title}}</h2>
+            <img class="article-image" [src]="article.image" [alt]="article.title" />
+            <p class="article-content">{{article.content}}</p>
+            <p class="article-created-at">Created at: {{article.createdAt}}</p>
+            <p class="article-likes">Likes: {{article.likeCount}}</p>
+            <p class="article-category">Category name: {{article.categoryName}}</p>
+        </div>
+    } @else {
+        <p> Désolée, aucun article n'a été publié pour le moment.</p>
+    }
+}
     </ul>
+
 </section>
