@@ -1,11 +1,12 @@
 import { CommonModule } from '@angular/common';
 import { Component } from '@angular/core';
+import { RouterModule } from '@angular/router';
 
 @Component({
   selector: 'app-article-list',
   templateUrl: './article-list.html',
   styleUrls: ['./article-list.css'],
-  imports: [CommonModule]
+  imports: [CommonModule, RouterModule]
 })
 export class ArticleList {
 articles: Article[] = [
