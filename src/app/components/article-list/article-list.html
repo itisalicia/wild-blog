@@ -2,7 +2,11 @@
     <ul class="article-list">
         @for (article of articles; track article.id) {
         @if (article.isPublished) {
-        <app-article-thumbnail-component [article]="article"> </app-article-thumbnail-component>
+        <app-article-thumbnail-component 
+        [article]="article" 
+        (likeClicked)="onLikeCliked($event)"
+        >
+        </app-article-thumbnail-component>
         } @else {
         <p> Désolée, aucun article n'a été publié pour le moment.</p>
         }

@@ -188,4 +188,17 @@ articles: Article[] = [
       isLiked: false,
     }
 ];
+
+onLikeCliked(articleId: number) {
+  const findArticle = this.articles.find(article => article.id === articleId);
+
+  if (findArticle) {
+    if (findArticle.isLiked === true) {
+      findArticle.isLiked = false;
+    } else {
+      findArticle.isLiked = true;
+    }
+  }
+};
+
 }
