@@ -1,12 +1,13 @@
 import { CommonModule } from '@angular/common';
 import { Component } from '@angular/core';
 import { RouterModule } from '@angular/router';
+import { ArticleThumbnailComponent } from "../article-thumbnail-component/article-thumbnail-component";
 
 @Component({
   selector: 'app-article-list',
   templateUrl: './article-list.html',
   styleUrls: ['./article-list.css'],
-  imports: [CommonModule, RouterModule]
+  imports: [CommonModule, RouterModule, ArticleThumbnailComponent]
 })
 export class ArticleList {
 articles: Article[] = [
@@ -187,16 +188,4 @@ articles: Article[] = [
       isLiked: false,
     }
 ];
-}
-
-interface Article {
-  id: number;
-  isPublished: boolean;
-  isLiked: boolean;
-  title: string;
-  content: string;
-  image: string;
-  createdAt: Date;
-  likeCount: number;
-  categoryName: string;
 }

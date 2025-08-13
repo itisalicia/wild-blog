@@ -1,0 +1,11 @@
+
+.article-card {
+    border: 1px solid black;
+    border-radius: 15px;
+    padding: 20px;
+    width: auto;
+}
+
+.popular-article {
+  border: 2px red solid;
+}

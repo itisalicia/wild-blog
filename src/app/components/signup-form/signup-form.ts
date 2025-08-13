@@ -59,14 +59,10 @@ export class SignupForm {
       const hasSpecialChar = /[!@#$%^&*(),.?":{}|<>]/.test(value);
       const isValidLength = value.length >= 12;
 
-      const passwordValid =
-        hasUpperCase &&
-        hasLowerCase &&
-        hasNumber &&
-        hasSpecialChar &&
-        isValidLength;
+      const passwordValid = hasUpperCase && hasLowerCase && hasNumber && hasSpecialChar && isValidLength;
 
       return passwordValid ? null : { securePassword: true };
+
     };
   }
 }

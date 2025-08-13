@@ -2,7 +2,7 @@
     <ul class="article-list">
 @for (article of articles; track article.id) {
     @if (article.isPublished) {
-        <div class="article-card" [ngClass]="{'popular-article' : article.likeCount > 200}">
+        <!-- <div class="article-card" [ngClass]="{'popular-article' : article.likeCount > 200}">
             <a [routerLink]="['/article', article.id]"> 
                 <h2 class="article-title">{{article.title}}</h2>
             </a>
@@ -11,7 +11,8 @@
             <p class="article-created-at">Created at: {{article.createdAt}}</p>
             <p class="article-likes">Likes: {{article.likeCount}}</p>
             <p class="article-category">Category name: {{article.categoryName}}</p>
-        </div>
+        </div> -->
+        <app-article-thumbnail-component [article]="article"> </app-article-thumbnail-component>
     } @else {
         <p> Désolée, aucun article n'a été publié pour le moment.</p>
     }
