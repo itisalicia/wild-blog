@@ -2,7 +2,9 @@ import { CommonModule } from '@angular/common';
 import { Component, inject } from '@angular/core';
 import { RouterModule } from '@angular/router';
 import { ArticleThumbnailComponent } from "../article-thumbnail-component/article-thumbnail-component";
-import { HttpClient } from '@angular/common/http';
+// import { HttpClient } from '@angular/common/http';
+import { Observable } from 'rxjs';
+import { ApiService } from '../../services/api-service';
 
 @Component({
   selector: 'app-article-list',
@@ -11,24 +13,24 @@ import { HttpClient } from '@angular/common/http';
   imports: [CommonModule, RouterModule, ArticleThumbnailComponent]
 })
 export class ArticleList {
-
-  onLikeCliked(articleId: number) {
-    const findArticle = this.articles.find(article => article.id === articleId);
-
-    if (findArticle) {
-      findArticle.isLiked = !findArticle.isLiked;
-    }
-  }
-  private http = inject(HttpClient);
   articles: Article[] = [];
+  private apiService = inject(ApiService);
 
-  constructor() {
-    this.getArticles();
-  };
-
-  getArticles() {
-    this.http.get<Article[]>('http://localhost:3000/articles').subscribe(articles => {
+  ngOnInit() {
+    this.apiService.getArticles().subscribe(articles => {
       this.articles = articles;
     });
   }
+
+  onLikeCliked(articleId: number) {
+    this.articles$.subscribe(articles => {
+      const findArticle = articles.find(article => article.id === articleId);
+
+      if (findArticle) {
+        findArticle.isLiked = !findArticle.isLiked;
+      }
+    });
+  }
+  articles$!: Observable<Article[]>;
+
 }
